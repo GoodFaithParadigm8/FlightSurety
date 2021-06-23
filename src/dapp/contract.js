@@ -1,12 +1,16 @@
 import FlightSuretyApp from '../../build/contracts/FlightSuretyApp.json';
 import Config from './config.json';
-import Web3 from 'web3';
+const Web3 = require('web3');
 
 export default class Contract {
     constructor(network, callback) {
+        if(window.ethereum){
+            this.web3 = new Web3(web3.currentProvider);
+        } else {
+            this.web3.setProvider(config.url);
 
+        }
         let config = Config[network];
-        this.web3 = new Web3(new Web3.providers.HttpProvider(config.url));
         this.flightSuretyApp = new this.web3.eth.Contract(FlightSuretyApp.abi, config.appAddress);
         this.initialize(callback);
         this.owner = null;

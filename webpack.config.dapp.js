@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: ['babel-polyfill', path.join(__dirname, "src/dapp")],
   output: {
-    path: path.join(__dirname, "prod/dapp"),
+    path: path.resolve(__dirname, "prod/dapp"),
     filename: "bundle.js"
   },
   module: {
